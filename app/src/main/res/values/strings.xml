@@ -20,4 +20,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="my_notes">My notes</string>
+    <string name="add_new_note">Add new note</string>
+    <string name="delete">Удалить</string>
+    <string name="update">Изменить</string>
 </resources>

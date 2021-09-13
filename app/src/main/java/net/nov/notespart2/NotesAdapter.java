@@ -29,6 +29,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     private ArrayList<NotesDetails> notesList;
     private ViewGroup parent;
     private int viewType;
+    private int menuPosition;
+    private TextView noteHeader;
+    
 
 
     public NotesAdapter(Context context, ArrayList<NotesDetails> notesList, HomeFragment homeFragment) {
@@ -37,6 +40,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         this.notesList = notesList;
         this.homeFragment = homeFragment;
     }
+    public int getMenuPosition() {
+        return menuPosition;
+    }
 
 
 
@@ -44,12 +50,28 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         this.parent = parent;
         this.viewType = viewType;
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.note_list_name, parent, false);
+        registerContextMenu(view);
         return new ViewHolder(view, viewType);
+
     }
+    private void registerContextMenu(@NonNull View view) {
+        if (homeFragment != null){
+//            noteHeader.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View v) {
+//                    menuPosition = getItemCount();;
+//                    return false;
+//                }
+            }
+
+            homeFragment.registerForContextMenu(view);
+        }
+
 
     @Override
     public void onBindViewHolder(@NonNull NotesAdapter.ViewHolder holder, int position){
@@ -76,7 +98,17 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         }
     });
 
-}
+//        noteHeader.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                menuPosition = getItemCount();
+//                v.showContextMenu(10, 10);
+//                return true;
+//            }
+//        });
+
+
+    }
 
     @Override
     public int getItemCount() {
