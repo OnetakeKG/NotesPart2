@@ -77,6 +77,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     });
 
 }
+    public void setDataSource(CardsSource dataSource){
+        this.dataSource = dataSource;
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getItemCount() {
